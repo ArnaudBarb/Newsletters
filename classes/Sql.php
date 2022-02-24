@@ -13,8 +13,8 @@ class Sql
         try{
             $this->connexion = new PDO("mysql:host=$this->serverName;dbname=$this->database", $this->userName, $this->userPassword);
             $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         }
+
         catch(PDOException $e){
             die("Erreur :  " . $e->getMessage());
         }
@@ -39,7 +39,6 @@ class Sql
             $requete = $this->connexion->prepare($sql);
             $requete->execute();
             $resultat = $requete->fetchAll(PDO::FETCH_OBJ);
-
 
             return $resultat;
         }
