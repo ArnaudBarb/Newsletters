@@ -1,0 +1,32 @@
+input {
+    width: 100%;
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+form ul {
+    background-color: whitesmoke;
+    border-radius: 3px;
+}
+
+form ul li {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em;
+}
+
+form ul li>label {
+    flex: 1;
+    padding: 0 10px 0 0;
+    text-align: right;
+}
+
+form ul li>input, form ul li>textarea  {
+    flex: 2;
+}
+
+form ul li>input[type=submit], form ul li>input[type=reset] {
+    padding: 10px 0;
+}

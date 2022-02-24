@@ -1,0 +1,94 @@
+@import url('./reset.css');
+@import url('./array.css');
+@import url('./form.css');
+@import url('./library.css');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0 0 20px;
+}
+
+h2 {
+    font-size: 1.5em;;
+    margin: 0 0 15px;
+}
+
+header {
+    border: 1px solid black;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction : row;
+    justify-content: center;
+    
+    @media(max-width: 450px) {
+        flex-flow: column wrap;
+    }
+}
+
+header nav ul li a {
+    padding: 1em;
+    display: block;
+    text-align:center;
+    text-decoration: none;
+    color: white;
+}
+
+header nav ul li a:link {
+    color: white;
+}
+
+header nav ul li a:visited {
+    color: gray;
+}
+
+header nav ul li a:hover {
+    color: white;
+    background-color: #0099cc;
+}
+
+header nav ul li a:active {
+    color: black;
+    background-color: #0099cc;
+}
+
+main {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 20px;
+}
+
+footer {
+    background-color: #0099cc;
+    border: 1px solid black;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 15px;
+}
+
+@media screen and (max-width: 575px) {
+    #main {
+      display: block;
+    }
+}

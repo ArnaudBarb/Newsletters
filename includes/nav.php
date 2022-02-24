@@ -13,6 +13,7 @@
                     echo "<li><a href=\"index.php?page=inscription\">Inscription</a></li>";
                 }
             ?>
+            <li><a href="index.php?page=thematiques">Choisir des centres d'interrêts</a></li>
             <li><a href="index.php?page=contact">Contact</a></li>
             <li><a href="index.php?page=themes">Thèmes</a></li>
             <?php

@@ -1,24 +1,25 @@
-<h1>Thèmes</h1>
+<h1>Choisissez un ou plusieurs centre d'interrêt</h1>
 <?php
 
 $conn = connPdo();
+$showSubjects = showSubjects();
 
-if (isset($_SESSION['login']) && ($_SESSION['role'] >=3 ))
+if (isset($_SESSION['login']) && ($_SESSION['role'] >=2 ))
 {
-        echo "Vous avez les droits pour insérer des données.";
+        echo "Vous pouvez choisr des centres d'interrêts.";
 
     if (isset($_POST['validation'])) 
     {
-        $subjectContent = htmlentities($_POST['subjectcontent']) ?? '';     
+        $themeCheck = htmlentities($_GET['themecheck']) ?? '';     
 
         $erreur = array();
 
-        if (strlen($subjectContent) === 0)
+        if (strlen($themeCheck) === 0)
         {
             array_push($erreur, "Veuillez saisir le sujet du thème");
         }
         else
-            $subjectContent = html_entity_decode($subjectContent);
+            $themeCheck = themeChecker();
             
         if (count($erreur) === 0) {
 
@@ -26,21 +27,17 @@ if (isset($_SESSION['login']) && ($_SESSION['role'] >=3 ))
             {
                 $conn = connPdo();
 
-                $requete = $conn->prepare("SELECT * FROM T_SUBJECTS WHERE SUBCONTENT = '$subjectContent'");
+                $requete = $conn->prepare("SELECT * FROM T_SUBJECTS WHERE SUBCONTENT = '$themeCheck'");
                 $requete->execute();
                 $resultat = $requete->fetchAll(PDO::FETCH_OBJ);
 
                 if(count($resultat) !== 0) {
-                    echo "<p>Le sujet est déjà enregistré</p>";
-                }
 
-                else
-                {
                     $query = $conn->prepare("
-                    INSERT INTO T_SUBJECTS(SUBCONTENT)
-                    VALUES (:subcontent)");
+                    INSERT INTO t_users_has_t_subjects(ID_SUBJECT)
+                    VALUES (:themecheck)");
 
-                    $query->bindParam(':subcontent', $subjectContent, PDO::PARAM_STR_CHAR);
+                    $query->bindParam(':themecheck', $themeCheck, PDO::PARAM_STR_CHAR);
                     $query->execute();
                     
                     echo "<p>Insertions effectuées</p>";
@@ -50,20 +47,19 @@ if (isset($_SESSION['login']) && ($_SESSION['role'] >=3 ))
                 die("Erreur :  " . $e->getMessage());
             }
             $conn = null;
-
         } 
         else 
         {
             $messageErreur = retourErreur();
-            include 'frmThemes.php';
+            include 'frmThematiques.php';
         }
     } 
     else 
     {
-        echo "<h2>Merci de renseigner le formulaire&nbsp;:</h2>";
-        $subjectContent = '';
+        echo "<h2>Vous pouvez choisir un ou plusieurs thème&nbsp;:</h2>";
+        $themeCheck = '';
 
-        include 'frmThemes.php';
+        include 'frmThematiques.php';
     }
 }
 else
