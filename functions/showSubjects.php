@@ -15,10 +15,10 @@ function showSubjects()
 //boucle servant à parser le tableau issu de la requète
     for ($i = 0; $i < count($resultat); $i++)
     {
+        $html .=  $resultat[$i]['SUBCONTENT'] . "<input type='checkbox' name='themecheck[]' value=". $resultat[$i]['ID_SUBJECT'] . ">";
     //incrémentation des résultats du parsing dont les valeurs sont concaténées comme suit:
     //valeurs contenues dans les index du tableau (tous les noms de sujets) . insertion de l'input dont les valeurs du nom sont
-    // contenues dans un tableau, (elles-mêmes dépendant de la valeur des l'id des sujets (value=))
-        $html .=  $resultat[$i]['SUBCONTENT'] . "<input type='checkbox' name='themecheck[]' value=". $resultat[$i]['ID_SUBJECT'] . ">";
+    //contenues dans un tableau, (elles-mêmes dépendant de la valeur des l'id des sujets (value=))
     }
     return $html;
     $conn = null;
