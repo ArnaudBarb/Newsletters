@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__.'/vendor/autoload.php';
+
 require_once './functions/autoLoadFunction.php';
 session_start();
 date_default_timezone_set('Europe/Paris');
