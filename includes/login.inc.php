@@ -34,6 +34,7 @@ if (isset($_POST['envoi'])) {
                         $_SESSION['nom'] = $resultat[0]->USENAME;
                         $_SESSION['prenom'] = $resultat[0]->USEFIRSTNAME;
                         $_SESSION['role'] = $resultat[0]->ID_ROLE;
+                        $_SESSION['id'] = $resultat[0]->ID_USER;
                         echo "<script>
                         document.location.replace('http://localhost/Newsletters/');
                         </script>";
@@ -54,7 +55,7 @@ if (isset($_POST['envoi'])) {
 
         $conn = null;
     } else {
-        $messageErreur = retourErreur();
+        $messageErreur = retourErreur($erreur);
     }
 } else {
     echo "<h2>Merci de renseigner le formulaire&nbsp;:</h2>";
