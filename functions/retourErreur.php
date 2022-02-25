@@ -1,16 +1,17 @@
 <?php
 
-function retourErreur(){
-    $erreur = [];
-
+function retourErreur(array $erreur) : string
+{
     $messageErreur = "<ul>";
     $i = 0;
-    do {
+    do 
+    {
         $messageErreur .= "<li>";
         $messageErreur .= $erreur[$i];
         $messageErreur .= "</li>";
         $i++;
-    } while ($i < count($erreur));
+    } 
+    while ($i < count($erreur));
 
     $messageErreur .= "</ul>";
 
