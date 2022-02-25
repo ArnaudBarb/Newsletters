@@ -54,7 +54,7 @@ if (isset($_SESSION['login']) && ($_SESSION['role'] >=3 ))
         } 
         else 
         {
-            $messageErreur = retourErreur();
+            $messageErreur = retourErreur($erreur);
             include 'frmThemes.php';
         }
     } 
